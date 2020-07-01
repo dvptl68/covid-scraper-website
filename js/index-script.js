@@ -99,9 +99,12 @@ const countySep = document.getElementById('county-sep');
 // Change display based on country selections made
 countrySelect.addEventListener('change', event => {
 
+  // Country name
+  const country = event.target.value;
+
   // Hide/show state and county selection based on the selected country
-  stateRow.style.display = (event.target.value === 'United States') ? 'flex' : 'none';
-  stateSep.style.display = (event.target.value === 'United States') ? 'flex' : 'none';
+  stateRow.style.display = (country === 'United States') ? 'flex' : 'none';
+  stateSep.style.display = (country === 'United States') ? 'flex' : 'none';
   countyRow.style.display = 'none';
   countySep.style.display = 'none';
 
@@ -109,22 +112,33 @@ countrySelect.addEventListener('change', event => {
   stateSelect.children[0].selected = true;
 
   // Enable/disable email input box based on the selected country
-  document.getElementById('email').disabled = event.target.value == '';
+  document.getElementById('email').disabled = country == '';
 });
 
 // Change display based on state selections made
 stateSelect.addEventListener('change', event => {
 
+  // State name
+  const state = event.target.value;
+
   // Hide/show county selection based on the selected state
-  countyRow.style.display = (event.target.value !== '') ? 'flex' : 'none';
-  countySep.style.display = (event.target.value !== '') ? 'flex' : 'none';
+  countyRow.style.display = (state !== '') ? 'flex' : 'none';
+  countySep.style.display = (state !== '') ? 'flex' : 'none';
 
   // Skip rest of function if selected state is none
-  if (event.target.value === '') return;
+  if (state === '') return;
 
-  // Set county selection label text and fill selection list
-  document.getElementById('county-label').innerHTML = `County in ${event.target.value} (optional):`;
-  fillCounties(event.target.value);
+  // Set section name depending on state
+  let sectionName = 'County';
+  if (state === 'Alaska') { sectionName = 'Borough'; }
+  else if (state === 'Louisiana') { sectionName = 'Parish' }
+  else if (state === 'Rhode Island') { sectionName = 'Municipality' }
+
+  // Set county selection label text
+  document.getElementById('county-label').innerHTML = `${sectionName} in ${state} (optional):`;
+
+  // Fill county selections
+  fillCounties(state);
 
   // Reset selection
   countySelect.children[0].selected = true;
