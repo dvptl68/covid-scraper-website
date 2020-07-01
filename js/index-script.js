@@ -1,3 +1,23 @@
+// Get GitHub image element
+const github = document.getElementById('github');
+
+// Change GitHub logo color scheme on hover/unhover
+github.addEventListener('mouseenter', () => {
+  github.style.backgroundColor = '#9FBAD3';
+  github.src = 'images/dark-logo.png';
+});
+
+github.addEventListener('mouseleave', () => {
+  github.style.backgroundColor = '#234574';
+  github.src = 'images/light-logo.png';
+});
+
+// Open correct pages on GitHub logo click
+github.addEventListener('click', () => {
+  window.open('https://github.com/dvptl68/covid-scraper-website');
+  window.open('https://github.com/dvptl68/covid-scraper');
+});
+
 // Function to set element positions
 const setPositions = () => {
 
@@ -9,6 +29,7 @@ const setPositions = () => {
   // Set vertical position of elements
   infoBlock.style.top = `${titleBlock.clientHeight}px`;
   mainContainer.style.top = `${titleBlock.clientHeight + infoBlock.clientHeight}px`;
+  console.log(titleBlock.clientHeight + ', ' + github.clientHeight);
 };
 
 // Set initial position of elements
