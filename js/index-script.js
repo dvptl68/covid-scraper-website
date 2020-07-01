@@ -29,7 +29,6 @@ const setPositions = () => {
   // Set vertical position of elements
   infoBlock.style.top = `${titleBlock.clientHeight}px`;
   mainContainer.style.top = `${titleBlock.clientHeight + infoBlock.clientHeight}px`;
-  console.log(titleBlock.clientHeight + ', ' + github.clientHeight);
 };
 
 // Set initial position of elements
@@ -130,9 +129,9 @@ stateSelect.addEventListener('change', event => {
 
   // Set section name depending on state
   let sectionName = 'County';
-  if (state === 'Alaska') { sectionName = 'Borough'; }
-  else if (state === 'Louisiana') { sectionName = 'Parish' }
-  else if (state === 'Rhode Island') { sectionName = 'Municipality' }
+  if (state === 'Alaska') sectionName = 'Borough'; 
+  else if (state === 'Louisiana') sectionName = 'Parish';
+  else if (state === 'Rhode Island') sectionName = 'Municipality';
 
   // Set county selection label text
   document.getElementById('county-label').innerHTML = `${sectionName} in ${state} (optional):`;
