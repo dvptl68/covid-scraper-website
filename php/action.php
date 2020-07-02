@@ -1,12 +1,6 @@
 <?php
 
-$config = [
-  "db" => [
-    "dbname" => "",
-    "username" => "",
-    "password" => "",
-    "host" => ""
-  ]
-];
+$myfile = fopen("config.json", "r");
+$config = json_decode(fread($myfile,filesize("config.json")), true);
 
-header('Location: ../success.html');
+// header('Location: ../success.html');
