@@ -20,15 +20,9 @@ $myfile = fopen("config.json", "r");
 $config = json_decode(fread($myfile,filesize("config.json")), true);
 fclose($myfile);
 
-
 // Test PDO connection
-$servername = "";
-$username = "";
-$password = "";
-$dbname = "";
-
 try {
-  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  $pdo = new PDO("mysql:host=localhost;dbname=database", 'username', 'password');
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   echo "Connected successfully";
 } catch(PDOException $e) {
