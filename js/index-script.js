@@ -110,8 +110,9 @@ countrySelect.addEventListener('change', event => {
   // Reset selections
   stateSelect.children[0].selected = true;
 
-  // Enable/disable email input box based on the selected country
+  // Enable/disable email and name input boxes based on the selected country
   document.getElementById('email').disabled = country == '';
+  document.getElementById('name').disabled = country == '';
 });
 
 // Change display based on state selections made
