@@ -12,6 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') failure();
 // Check that a country is selected
 if (empty($_POST['country'])) failure();
 
+//Check that a name is entered
+if (empty($_POST['name'])) failure();
+
 // Check that entered email is valid
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) failure();
 
