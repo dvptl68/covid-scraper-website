@@ -21,7 +21,7 @@ $config = json_decode(fread($myfile,filesize("config.json")), true);
 fclose($myfile);
 
 //Test email sending
-
+$mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
 // Redirect to success page
 header('Location: ../success.html');

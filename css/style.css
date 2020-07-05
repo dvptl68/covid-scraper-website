@@ -84,6 +84,8 @@ html {
   border-radius: 4px;
 }
 
+#name { width: 200px; }
+
 .lists {
   font-size: 20px;
   width: 260px;
