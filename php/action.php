@@ -20,6 +20,7 @@ $myfile = fopen("config.json", "r");
 $config = json_decode(fread($myfile,filesize("config.json")), true);
 fclose($myfile);
 
+//Test email sending
 
 
 // Redirect to success page
