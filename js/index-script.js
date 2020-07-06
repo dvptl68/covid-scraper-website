@@ -119,11 +119,11 @@ stateSelect.addEventListener('change', event => {
   const state = event.target.value;
 
   // Hide/show county selection based on the selected state
-  countyRow.style.display = (state !== '') ? 'flex' : 'none';
-  countySep.style.display = (state !== '') ? 'flex' : 'none';
+  countyRow.style.display = (state !== '' && state !== 'Utah') ? 'flex' : 'none';
+  countySep.style.display = (state !== '' && state !== 'Utah') ? 'flex' : 'none';
 
-  // Skip rest of function if selected state is none
-  if (state === '') return;
+  // Skip rest of function if selected state is Utah or none
+  if (state === '' || state =='Utah') return;
 
   // Set section name depending on state
   let sectionName = 'County';
