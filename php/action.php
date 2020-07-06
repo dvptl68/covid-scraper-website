@@ -21,14 +21,24 @@ if (empty($_POST['name'])) failure();
 // Check that entered email is valid
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) failure();
 
+//Aggregate signup data into associative array
+$data = [
+  'country' => $_POST['country'],
+  'state' => $_POST['state'] ?: '',
+  'county' => $_POST['county'] ?: '',
+  'name' => $_POST['name'],
+  'email' => $_POST['email']
+];
+
 // Read configuration data from file
 $myfile = fopen('config.json', 'r');
-$config = json_decode(fread($myfile,filesize('config.json')), true);
+$config = json_decode(fread($myfile, filesize('config.json')), true);
 fclose($myfile);
 
-// Test email sending
+// Create mail object for data extraction
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
+// Set up mail account
 $mail->IsSMTP();
 $mail->Mailer = 'smtp';
 $mail->SMTPDebug = 1;  
@@ -39,19 +49,16 @@ $mail->Host = 'smtp.gmail.com';
 $mail->Username = $config['username'];
 $mail->Password = $config['password'];
 
-$mail->IsHTML(true);
+// Set email content
+$mail->IsHTML(false);
 $mail->AddAddress($config['to']['email'], $config['to']['name']);
 $mail->SetFrom($config['from']['email'], $config['from']['name']);
-$mail->Subject = 'Test is Test Email sent via Gmail SMTP Server using PHP Mailer';
-$content = '<b>This is a Test Email sent via Gmail SMTP Server using PHP mailer class.</b>';
-
+$mail->Subject = 'new user registration';
+$content = json_encode($data);
 $mail->MsgHTML($content); 
-if(!$mail->Send()) {
-  echo 'Error while sending Email.';
-  var_dump($mail);
-} else {
-  echo 'Email sent successfully';
-}
+
+// Send email and redirect to failure page if it is not sent successfully
+if(!$mail->Send()) failure();
 
 // Redirect to success page
 header('Location: ../success.html');
