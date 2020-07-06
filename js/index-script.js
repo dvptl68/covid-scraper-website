@@ -12,11 +12,8 @@ github.addEventListener('mouseleave', () => {
   github.src = 'images/light-logo.png';
 });
 
-// Open correct pages on GitHub logo click
-github.addEventListener('click', () => {
-  window.open('https://github.com/dvptl68/covid-scraper-website');
-  window.open('https://github.com/dvptl68/covid-scraper');
-});
+// Open source code page on GitHub logo click
+github.addEventListener('click', () => window.open('https://github.com/dvptl68/covid-scraper'));
 
 // Function to set element positions
 const setPositions = () => {
