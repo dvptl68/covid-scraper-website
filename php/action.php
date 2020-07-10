@@ -46,7 +46,7 @@ $mail->SMTPAuth = TRUE;
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 $mail->Host = 'smtp.gmail.com';
-$mail->Username = $config['username'];
+$mail->Username = $config['address'];
 $mail->Password = $config['password'];
 
 // Set email content
@@ -55,7 +55,7 @@ $mail->AddAddress($config['address'], $config['toName']);
 $mail->SetFrom($config['address'], $config['fromName']);
 $mail->Subject = 'new user registration';
 $content = json_encode($data);
-$mail->MsgHTML($content); 
+$mail->MsgHTML($content);
 
 // Send email and redirect to failure page if it is not sent successfully
 if(!$mail->Send()) failure();
