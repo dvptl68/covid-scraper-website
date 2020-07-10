@@ -5,7 +5,7 @@ require('../vendor/phpmailer/phpmailer/src/SMTP.php');
 
 // Function that redirects to failure page and terminates script
 function failure() {
-  header('Location: ../fail.html');
+  header('Location: ../failUnsub.html');
   exit();
 }
 
@@ -51,8 +51,8 @@ $mail->Password = $config['password'];
 
 // Set email content
 $mail->IsHTML(false);
-$mail->AddAddress($config['address'], $config['toName']);
-$mail->SetFrom($config['address'], $config['fromName']);
+$mail->AddAddress($config['to']['email'], $config['to']['name']);
+$mail->SetFrom($config['from']['email'], $config['from']['name']);
 $mail->Subject = 'new user registration';
 $content = json_encode($data);
 $mail->MsgHTML($content); 
@@ -61,4 +61,4 @@ $mail->MsgHTML($content);
 if(!$mail->Send()) failure();
 
 // Redirect to success page
-header('Location: ../success.html');
+header('Location: ../successUnsub.html');
