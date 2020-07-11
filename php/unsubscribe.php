@@ -9,7 +9,7 @@ function failure() {
   exit();
 }
 
-// Check that the request method is post
+// Check that the request method is get
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') failure();
 
 // Check that an email address is given
