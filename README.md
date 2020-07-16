@@ -8,3 +8,6 @@ Visit [this website](http://covid19reports.epizy.com/) to sign up to receive dai
 If you register twice with different selections and the same email you will receive multiple emails for each selection. If you register twice with the same sleections and same emails *you will still receive multiple emails*.  
   
 Every email has an unsubscribe link at the bottom, so you can opt-out of every location you register to receive emails for.
+
+## How it works:
+This sign-up website is hosted with [InfinityFree](https://infinityfree.net/), using HTML, CSS, and JavaScript as the front-end tools, and PHP for the web server. An in-depth description of the enitre project can be viewed at the [main web scraper repository](https://github.com/dvptl68/covid-scraper).
